@@ -9,9 +9,10 @@ char line[MAXLINE];
 void hexu(void);
 void minus(void);
 void getLine(void);
+int comp(char[]);
 
 int main(){
-	hexu();
+	minus();
 }
 void hexu(void){
 
@@ -54,7 +55,7 @@ void hexu(void){
 
 void minus(void)// input a line and output it in Lowercase 
 {
-	int c;
+	/*int c;
 	while((c = getchar()) != EOF && c != '\n')
 	{
 		if(c >= 'A' && c <= 'Z')
@@ -66,7 +67,29 @@ void minus(void)// input a line and output it in Lowercase
 			break;
 		}
 	}
+	printf("\n");*/
+
+	getLine();
+
+	extern char line[];
+	int i = 0;
+	while(i < (comp(line)))
+	{
+		if ( line[i]>='A' && line[i]<='Z' )
+			putchar(line[i] + 'a' - 'A');
+		else if ( line[i]>='a' && line[i]<='z' )
+			putchar(line[i]);
+		else if (line[i] == '\t' || line[i] == ' '){
+			putchar(line[i]);
+		}
+		else {
+			printf("\n\t[Erro,Character Invalid]\n");
+			break;
+		}
+		++i;
+	}
 	printf("\n");
+	//printf("\n%d\n",comp(line));
 }
 
 void getLine(void){ // get line into a string
@@ -82,4 +105,11 @@ void getLine(void){ // get line into a string
 	}
 
 	line[i] = '\0';
+}
+
+int comp(char s[]){// return string length
+	int i = 0;
+	while(s[i] != '\0' && s[i] != '\n')
+		i++;
+	return i;
 }
