@@ -7,24 +7,26 @@ enum {NO = 0,YES = 1};
 char line[MAXLINE];
 
 void hexu(void);
-void minus(void);
+//void minus(void);
 void getLine(void);
 int comp(char[]);
 
-int main(){
-	minus();
+int main()
+{
+	hexu();
 }
+
 void hexu(void){
 
 	getLine();
 
 	extern char line[];
 
-	int hexdigit,i,inhex,n;
-	n = i = 0 ;
+	int hexdigit,i,inhex,n=0;
+
 	inhex = YES;
 
-	while (inhex == YES)
+	for(i = 0;inhex == YES;++i)
 	{
 		if (line[i] >= '0' && line[i] <= '9')
 		{
@@ -45,10 +47,8 @@ void hexu(void){
 
 		if (inhex == YES)
 			n = 16 * n + hexdigit ;
-		++i;
 	}
-
-//	printf("%d\n",n);
+	printf("%d\n",n);
 }
 
 
@@ -70,8 +70,8 @@ void minus(void)// input a line and output it in Lowercase
 	printf("\n");*/
 
 	getLine();
-
 	extern char line[];
+
 	int i = 0;
 	while(i < (comp(line)))
 	{
