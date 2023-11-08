@@ -2,12 +2,9 @@
 
 #define MAXLINE 50
 enum {NO = 0,YES = 1};
-/* Convert Case */
-
 char line[MAXLINE];
 
 void hexu(void);
-//void minus(void);
 void getLine(void);
 int comp(char[]);
 
@@ -17,80 +14,37 @@ int main()
 }
 
 void hexu(void){
-
 	getLine();
-
 	extern char line[];
 
 	int hexdigit,i,inhex,n=0;
-
 	inhex = YES;
 
-	for(i = 0;inhex == YES;++i)
-	{
-		if (line[i] >= '0' && line[i] <= '9')
-		{
+	for(i = 0;inhex == YES;++i){
+		if (line[i] >= '0' && line[i] <= '9'){
 			hexdigit = line[i] - '0';
 		}
-		else if (line[i] >= 'a' && line[i] <= 'z')
-		{
+		else if (line[i] >= 'a' && line[i] <= 'z'){
 			hexdigit = line[i] - 'a' + 10;
 		}
-		else if (line[i] >= 'A' && line[i] <= 'Z')
-		{
+		else if (line[i] >= 'A' && line[i] <= 'Z'){
 			hexdigit = line[i] - 'A' + 10;
 		}
-		else
-		{
+		else if (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'){
+			if(n != 0)
+				printf("%d ", n);
+			hexdigit = n = 0;
+		}
+		else{
 			inhex = NO;
 		}
 
 		if (inhex == YES)
 			n = 16 * n + hexdigit ;
 	}
-	printf("%d\n",n);
-}
-
-
-
-void minus(void)// input a line and output it in Lowercase 
-{
-	/*int c;
-	while((c = getchar()) != EOF && c != '\n')
-	{
-		if(c >= 'A' && c <= 'Z')
-			putchar(c + 'a' - 'A');
-		else if(c >= 'a' && c <= 'z')
-			putchar(c);
-		else{
-			printf("\n\t[Erro, Character Invalid]\n");
-			break;
-		}
-	}
-	printf("\n");*/
-
-	getLine();
-	extern char line[];
-
-	int i = 0;
-	while(i < (comp(line)))
-	{
-		if ( line[i]>='A' && line[i]<='Z' )
-			putchar(line[i] + 'a' - 'A');
-		else if ( line[i]>='a' && line[i]<='z' )
-			putchar(line[i]);
-		else if (line[i] == '\t' || line[i] == ' '){
-			putchar(line[i]);
-		}
-		else {
-			printf("\n\t[Erro,Character Invalid]\n");
-			break;
-		}
-		++i;
-	}
 	printf("\n");
-	//printf("\n%d\n",comp(line));
 }
+
 
 void getLine(void){ // get line into a string
 	int c,i;
